@@ -3,7 +3,15 @@ var Main = require("../containers/Main");
 
 function Home (props) {
   return (
-    <div>This is the home component</div>
+    <div>
+        <p className='lead'>Enter a City and State</p>
+	<div>
+		<input type="text" placeholder="St George, UT" />
+	</div>
+	<div>
+		<button>Get Weather</button>
+	</div>
+    </div>
 
   )
 }
