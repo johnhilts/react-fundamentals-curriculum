@@ -10,8 +10,8 @@ function getStyles(props){
 function GetCity(props) {
   return (
     <div style={getStyles(props)}>
-      <input type="text" placeholder="St George, UT" />
-      <button>Get Weather</button>
+    <input type="text" placeholder="St George, UT" value={props.city} onChange={props.onUpdateCity} />
+    <button type="button" onClick={props.onSubmitCity}>Get Weather</button>
     </div>
   )
 }
