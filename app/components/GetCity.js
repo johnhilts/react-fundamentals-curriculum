@@ -7,7 +7,7 @@ function getStyles(props){
   }
 }
 
-var GetCity = function(props) {
+function GetCity(props) {
   return (
     <div style={getStyles(props)}>
       <input type="text" placeholder="St George, UT" />
