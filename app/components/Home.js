@@ -1,5 +1,6 @@
 var React = require('react');
 var Main = require("../containers/Main");
+var GetCityContainer = require('../containers/GetCityContainer');
 
 var styles = {
   container: {
@@ -22,17 +23,11 @@ var styles = {
 function Home (props) {
   return (
     <div style={styles.container}>
-        <p style={styles.header}>Enter a City and State</p>
-	<div>
-		<input type="text" placeholder="St George, UT" />
-	</div>
-	<div>
-		<button>Get Weather</button>
-	</div>
+      <p style={styles.header}>Enter a City and State</p>
+        <GetCityContainer />
     </div>
 
   )
 }
 
 module.exports = Home;
-

@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link
+var GetCityContainer = require('../containers/GetCityContainer');
 
 var styles = {
   header: {
@@ -17,6 +18,7 @@ function Main(props) {
       <div>
         <div style={styles.header}>
           <h1>Clever Header</h1>
+          <GetCityContainer direction='row' />
         </div>
         <div style={styles.container}>
           {props.children}
