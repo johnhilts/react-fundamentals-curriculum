@@ -6,6 +6,7 @@ var Forecast = function(props) {
       This is the forecast container!<br />
       <br />
       The city is: {props.city}<br />
+      The current temperature is: {props.currentTemperature}<br />
     </div>
   )
 };
