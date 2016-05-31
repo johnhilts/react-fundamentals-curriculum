@@ -17,7 +17,7 @@ function Main(props) {
     return (
       <div>
         <div style={styles.header}>
-          <h1>Clever Header</h1>
+          <h1>City Weather</h1>
           <GetCityContainer direction='row' />
         </div>
         <div style={styles.container}>
