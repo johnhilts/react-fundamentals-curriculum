@@ -10,18 +10,19 @@ var ForecastContainer = React.createClass({
       isLoading: true,
       city: this.props.routeParams.city,
       currentTemperature: 0,
+      days: [],
     }
   },
 
   componentDidMount: function() {
-    this.getCurrentWeather(this.state.city);
+    this.getWeatherForecast(this.state.city);
   },
 
   componentWillReceiveProps: function(nextProps) {
     this.setState({
       city: nextProps.routeParams.city,
     });
-    this.getCurrentWeather(this.state.city);
+    this.getWeatherForecast(this.state.city);
   },
 
   getCurrentWeather: function(city) {
@@ -42,13 +43,43 @@ var ForecastContainer = React.createClass({
     );
   },
 
+  getWeatherForecast: function(city) {
+    return (
+      helper.getWeatherForecast(city)
+      .then(function(weatherData){
+        if (!weatherData) {
+          return;
+        }
+        var days = [];
+        for (var i = 0; i < weatherData.data.list.length; i++) {
+          var today = new Date();
+          var numberOfDaysToAdd = i;
+          today.setDate(today.getDate() + numberOfDaysToAdd);
+          var formattedDate = today.toDateString();
+          var temp = weatherData.data.list[i].temp.day;
+          days.push(
+            {
+              formattedDate: formattedDate,
+              temp: temp,
+            }
+          );
+        }
+        this.setState({
+          isLoading: false,
+          days: days,
+        })
+      }.bind(this))
+    );
+  },
+
   render: function() {
-      return (
-        <Forecast
-          city={this.state.city}
-          isLoading={this.state.isLoading}
-          currentTemperature={this.state.currentTemperature} />
-      )
+    return (
+      <Forecast
+      city={this.state.city}
+      isLoading={this.state.isLoading}
+      currentTemperature={this.state.currentTemperature}
+      days={this.state.days} />
+    )
   }
 });
 
