@@ -1,8 +1,15 @@
 var React = require('react');
+var ReactRouter = require('react-router');
 var GetCity = require('../components/GetCity');
+var Forecast = require('../containers/ForecastContainer');
 var helper = require('../helpers/api');
 
 var GetCityContainer = React.createClass({
+
+	// NOTE: contextTypes doesn't scale well, but ok for limited use such as with routers
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
 
   getInitialState: function() {
     return {
@@ -30,6 +37,7 @@ var GetCityContainer = React.createClass({
           currentTemperature: fahrenheit,
         })
         console.log("Current Temp: "+ this.state.currentTemperature);
+        this.context.router.push('/forecast/' + this.state.city);
       }.bind(this));
   },
 
