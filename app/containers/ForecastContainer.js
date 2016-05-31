@@ -1,15 +1,12 @@
 var React = require('react');
+var Forecast = require('../components/Forecast');
 
-var Forecast = React.createClass({
+var ForecastContainer = React.createClass({
   render: function() {
     return (
-      <div>
-        This is the forecast container!<br />
-        <br />
-        The city is: {this.props.routeParams.city}<br />
-      </div>
+      <Forecast city={this.props.routeParams.city} />
     )
   }
 });
 
-module.exports = Forecast;
+module.exports = ForecastContainer;
