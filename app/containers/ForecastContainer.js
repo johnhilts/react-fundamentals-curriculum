@@ -59,6 +59,7 @@ var ForecastContainer = React.createClass({
           var temp = weatherData.data.list[i].temp.day;
           days.push(
             {
+              key: weatherData.data.list[i].dt,
               formattedDate: formattedDate,
               temp: temp,
             }

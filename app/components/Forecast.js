@@ -1,7 +1,17 @@
 var React = require('react');
 
-function listDays(day){
-  return (<div key={day.formattedDate}>{day.formattedDate} : {day.temp}</div>);
+function ItemDay(props) {
+  return (
+    <div>
+      {props.day.formattedDate} : {props.day.temp}
+    </div>
+  );
+}
+
+function ListDays(day){
+  return (
+    <ItemDay key={day.key} day={day} />
+  );
 }
 
 var Forecast = function(props) {
@@ -14,7 +24,7 @@ var Forecast = function(props) {
         This is the forecast container!<br />
         <br />
         The city is: {props.city}<br />
-        {props.days.map(listDays)}
+        {props.days.map(ListDays)}
       </div>
   )
 };
