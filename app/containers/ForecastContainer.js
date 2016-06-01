@@ -57,9 +57,11 @@ var ForecastContainer = React.createClass({
           today.setDate(today.getDate() + numberOfDaysToAdd);
           var formattedDate = today.toDateString();
           var temp = weatherData.data.list[i].temp.day;
+          var icon = weatherData.data.list[i].weather[0].icon;
           days.push(
             {
               key: weatherData.data.list[i].dt,
+              icon: icon,
               formattedDate: formattedDate,
               temp: temp,
             }

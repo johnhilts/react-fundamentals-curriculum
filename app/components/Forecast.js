@@ -3,7 +3,8 @@ var React = require('react');
 function ItemDay(props) {
   return (
     <div>
-      {props.day.formattedDate} : {props.day.temp}
+      <img src={'./app/images/weather-icons/' + props.day.icon + '.svg'} alt='Weather' /><br />
+      {props.day.formattedDate}
     </div>
   );
 }
@@ -21,9 +22,7 @@ var Forecast = function(props) {
       <div style={{background: 'red',}}>Loading ... please wait!</div>
     :
       <div>
-        This is the forecast container!<br />
-        <br />
-        The city is: {props.city}<br />
+        <h1>{props.city}</h1>
         {props.days.map(ListDays)}
       </div>
   )
