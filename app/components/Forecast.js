@@ -3,15 +3,21 @@ var React = require('react');
 function ItemDay(props) {
   return (
     <div>
-      <img src={'./app/images/weather-icons/' + props.day.icon + '.svg'} alt='Weather' /><br />
-      {props.day.formattedDate}
+      <a onClick={props.onHandleDayClick}>
+        <img src={'./app/images/weather-icons/' + props.day.icon + '.svg'} alt='Weather' /><br />
+        {props.day.formattedDate}
+      </a>
     </div>
   );
 }
 
-function ListDays(day){
+function ListDays(props) {
   return (
-    <ItemDay key={day.key} day={day} />
+    <div>
+      {props.days.map(function (day) {
+        return <ItemDay key={day.key} day={day} onHandleDayClick={props.onHandleDayClick.bind(null, day)} />
+      })}
+    </div>
   );
 }
 
@@ -23,7 +29,7 @@ var Forecast = function(props) {
     :
       <div>
         <h1>{props.city}</h1>
-        {props.days.map(ListDays)}
+        <ListDays city={props.city} days={props.days} onHandleDayClick={props.onHandleDayClick} />
       </div>
   )
 };

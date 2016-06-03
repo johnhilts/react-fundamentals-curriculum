@@ -5,6 +5,11 @@ var helper = require('../helpers/api');
 
 var ForecastContainer = React.createClass({
 
+	// NOTE: contextTypes doesn't scale well, but ok for limited use such as with routers
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
+  
   getInitialState: function() {
     return {
       isLoading: true,
@@ -75,11 +80,21 @@ var ForecastContainer = React.createClass({
     );
   },
 
+  handleDayClick: function(day) {
+    this.context.router.push({
+      pathname: '/detail/' + this.props.routeParams.city,
+      state: {
+        day: day
+      }
+    })
+  },
+
   render: function() {
     return (
       <Forecast
       city={this.state.city}
       isLoading={this.state.isLoading}
+      onHandleDayClick={this.handleDayClick}
       currentTemperature={this.state.currentTemperature}
       days={this.state.days} />
     )
