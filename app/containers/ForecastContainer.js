@@ -9,7 +9,7 @@ var ForecastContainer = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object.isRequired
 	},
-  
+
   getInitialState: function() {
     return {
       isLoading: true,
@@ -28,24 +28,6 @@ var ForecastContainer = React.createClass({
       city: nextProps.routeParams.city,
     });
     this.getWeatherForecast(this.state.city);
-  },
-
-  getCurrentWeather: function(city) {
-    return (
-      helper.getCurrentWeather(city)
-      .then(function(weatherData){
-        if (!weatherData) {
-          return;
-        }
-        var currentTemperature = weatherData.data.main.temp;
-        var fahrenheit = currentTemperature * 1.8 + 32;
-        this.setState({
-          isLoading: false,
-          currentTemperature: fahrenheit,
-        })
-        console.log("Current Temp: "+ this.state.currentTemperature);
-      }.bind(this))
-    );
   },
 
   getWeatherForecast: function(city) {
