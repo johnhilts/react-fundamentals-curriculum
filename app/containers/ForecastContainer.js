@@ -43,7 +43,8 @@ var ForecastContainer = React.createClass({
           var numberOfDaysToAdd = i;
           today.setDate(today.getDate() + numberOfDaysToAdd);
           var formattedDate = today.toDateString();
-          var temp = weatherData.data.list[i].temp.day;
+          var kelvin = weatherData.data.list[i].temp.day;
+          var temp = parseInt(((kelvin - 273.15)* 1.8000 + 32.00), 10);
           var icon = weatherData.data.list[i].weather[0].icon;
           days.push(
             {
@@ -64,7 +65,7 @@ var ForecastContainer = React.createClass({
 
   handleDayClick: function(day) {
     this.context.router.push({
-      pathname: '/detail/' + this.props.routeParams.city,
+      pathname: '/detail/' + this.state.city,
       state: {
         day: day
       }

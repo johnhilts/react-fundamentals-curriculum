@@ -9,10 +9,11 @@ var DetailContainer = React.createClass({
       isLoading: true,
       city: this.props.routeParams.city,
       currentTemperature: 0,
-      day: {},
+      day: this.props.location.state.day
     }
   },
 
+/*
   componentDidMount: function() {
     this.getCurrentWeather(this.state.city);
   },
@@ -23,8 +24,10 @@ var DetailContainer = React.createClass({
     });
     this.getCurrentWeather(this.state.city);
   },
+  */
 
-  // always get the current weather for the detail ... ignoring the date clicked
+  // NOTE: no longer using this at all ... state is passed in from the forecast component via routing
+  // just keeping for future reference ... in real code all unused code should be deleted
   getCurrentWeather: function(city) {
     return (
       helper.getCurrentWeather(city)
@@ -52,7 +55,7 @@ var DetailContainer = React.createClass({
 
   render: function() {
     return (
-      <Detail city={this.state.city} day={this.state.day} isLoading={this.state.isLoading} />
+      <Detail city={this.state.city} day={this.state.day}  />
     );
   }
 })
